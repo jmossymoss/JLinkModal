@@ -1,0 +1,12 @@
+schema_version = "1.0.0"
+
+id = "jlink_modal"
+name = "JLink: Link Transforms"
+version = "1.0.1"
+tagline = "Modal link/transfer transforms with face-pick cursor rotation"
+maintainer = "Jac Rossiter, Jordan Moss"
+type = "add-on"
+
+tags = ["Object"]
+blender_version_min = "4.5.0"
+license = ["SPDX:GPL-2.0-or-later"]
