@@ -3,7 +3,7 @@ schema_version = "1.0.0"
 id = "jlink_modal"
 name = "JLink: Link Transforms"
 version = "1.0.1"
-tagline = "Modal link/transfer transforms with face-pick cursor rotation"
+tagline = "Modal link/transfer transforms and Set Origin Rotation from Face"
 maintainer = "Jac Rossiter, Jordan Moss"
 type = "add-on"
 

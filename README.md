@@ -5,7 +5,7 @@ What you'll see:
 
 ![preview](https://i.imgur.com/DGc9Dbh.png)
 
-At the bottom there are 5 new buttons. Set Origin Rotation From Face is **modal** — you can preview the result and flip axes before committing.
+At the bottom there are 5 new buttons. **Set Origin Rotation from Face** is **modal** — you can preview the result and flip axes before committing.
 
 ## Location
 Transfers location from active object to selection.
@@ -19,7 +19,7 @@ Transfers scale from active object to selection.
 ## All Transforms
 Transfers location, rotation and scale from active object to selection.
 
-## Set Origin Rotation From Face
+## Set Origin Rotation from Face
 Sets your selected objects' rotation to that of the selected face, maintaining scene position.
 
 ---

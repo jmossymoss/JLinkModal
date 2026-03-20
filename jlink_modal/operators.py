@@ -301,16 +301,17 @@ class LinkTransform_Operator(LinkTransformModalMixin, Operator):
 
 class RotationFromCursor_Operator(LinkTransformModalMixin, Operator):
     bl_idname = "object.jlink_cursor_rotation"
-    bl_label = "Set Object Rotation using 3D Cursor"
+    bl_label = "Set Origin Rotation from Face"
     bl_description = (
-        "Click a face to align selected objects to that face's normal (cursor position saved and restored)"
+        "Align selection rotation to a picked face normal; "
+        "Space or Enter to confirm, Esc to cancel; 3D cursor position is restored afterward"
     )
     bl_options = {"REGISTER"}
 
-    _op_title = "Rotation from 3D Cursor"
+    _op_title = "Set Origin Rotation from Face"
 
     def execute(self, context):
-        """Fallback for scripts/redo - applies cursor rotation directly."""
+        """Fallback for scripts/redo - applies face-aligned rotation directly."""
         self._mesh_backups = []
         self._face_pick_mode = False
         self._face_picked = False
@@ -336,7 +337,7 @@ class RotationFromCursor_Operator(LinkTransformModalMixin, Operator):
         self._picked_location = None
         self._picked_normal = None
         self._picked_face_verts = None
-        # Backup mesh vertices (cursor rotation modifies mesh)
+        # Backup mesh vertices (face alignment modifies mesh)
         self._mesh_backups = []
         for obj in context.selected_objects:
             if obj.type == "MESH" and obj.data:
@@ -387,8 +388,8 @@ class RotationFromCursor_Operator(LinkTransformModalMixin, Operator):
             tag_redraw_all_view3d()
             return {"RUNNING_MODAL"}
 
-        # Space confirms and closes the modal
-        if event.type == "SPACE" and event.value == "PRESS":
+        # Space or Enter confirms and closes the modal
+        if event.type in {"SPACE", "RET", "NUMPAD_ENTER"} and event.value == "PRESS":
             clear_active_modal_op()
             _remove_draw_handlers(self)
             tag_redraw_all_view3d()
@@ -490,10 +491,10 @@ class RotationFromCursor_Operator(LinkTransformModalMixin, Operator):
 
 
 class JLinkCursorRotationInvoke_Operator(Operator):
-    """Wrapper to invoke Rotation from 3D Cursor with correct 3D view context (fixes Ctrl+L menu)."""
+    """Wrapper to invoke Set Origin Rotation from Face with correct 3D view context (fixes Ctrl+L menu)."""
 
     bl_idname = "object.jlink_cursor_rotation_invoke"
-    bl_label = "Rotation from 3D Cursor"
+    bl_label = "Set Origin Rotation from Face"
     bl_options = {"REGISTER"}
 
     @classmethod

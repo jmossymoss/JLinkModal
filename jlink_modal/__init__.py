@@ -1,7 +1,7 @@
 bl_info = {
     "name": "JLink: Link Transforms",
     "author": "Jac Rossiter, Jordan Moss",
-    "description": "Adds Link Transforms to Link Menu (Ctrl L) - GPU Modal Set origin rotation from face",
+    "description": "Adds Link Transforms to Link Menu (Ctrl+L), including Set Origin Rotation from Face",
     "blender": (4, 5, 0),
     "version": (1, 0, 1),
     "warning": "",

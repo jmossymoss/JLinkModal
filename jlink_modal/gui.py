@@ -77,7 +77,7 @@ def draw_modal_ui(op, context):
             "",
             "LMB        - Select face",
             "X / Y / Z  - Flip axis" + ((" [" + flip_str.strip() + "]") if flip_str else ""),
-            "Space      - Confirm",
+            "Space / Enter - Confirm",
             "Esc / RMB  - Cancel",
             "",
             "Face: " + ("detected" if hit_loc else "none"),
@@ -107,9 +107,12 @@ def draw_modal_ui(op, context):
     box_w = max_w + pad * 2
     box_h = len(lines) * line_height + pad * 2
 
-    # Position: bottom-left of viewport with margin
     margin = 20
-    x0 = margin
+    addon = context.preferences.addons.get(__package__)
+    if addon and getattr(addon.preferences, "modal_hud_side", None) == "RIGHT":
+        x0 = width - box_w - margin
+    else:
+        x0 = margin
     y0 = margin
 
     # Draw background panel (semi-transparent dark)
